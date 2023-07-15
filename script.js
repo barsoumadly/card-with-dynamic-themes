@@ -28,7 +28,17 @@ const changeCardColor = function (color) {
   firstChild.style.border = secondChild.style.border = `3px solid ${color}`;
   firstChild.style.backgroundColor = color;
   secondChild.style.color = color;
+
+  // save the current color to local storage
+  window.localStorage.setItem('color', color);
 };
+
+const retrieveLastColor = function () {
+  const lastColor = window.localStorage.getItem('color');
+  changeCardColor(lastColor);
+};
+
+retrieveLastColor();
 
 btnBlue.addEventListener('click', () => {
   changeCardColor('#3498db');
